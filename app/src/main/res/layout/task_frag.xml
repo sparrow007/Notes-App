@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        
+        <import type="android.view.View"/>
+        <import type="androidx.core.content.ContextCompat"/>
+
+        <variable
+            name="viewmodel"
+            type="com.jackandphantom.mytodo.task.TaskViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/refresh_layout"
+            app:onRefreshListener= "@{viewmodel::refresh}"
+            app:refreshing="@{viewmodel.dataLoading}">
+            
+            <RelativeLayout
+                android:id="@+id/tasks_container_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true">
+
+                <include layout="@layout/toolbar_home"
+                    android:id="@+id/home_toolbar"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tasks_linear_layout"
+                    android:layout_below="@+id/home_toolbar"
+                    android:orientation="vertical"
+                    android:visibility="@{viewmodel.empty ? View.GONE : View.VISIBLE}">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tasks_list"
+                        app:items="@{viewmodel.items}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        />
+
+
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/no_tasks_layout"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:visibility="@{viewmodel.empty ? View.VISIBLE : View.GONE}">
+
+                    <soup.neumorphism.NeumorphTextView
+                        android:id="@+id/text_view_note_empty"
+                        style="@style/Widget.Neumorph.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note is empty"
+                        android:textColor="@color/background"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_task_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{()-> viewmodel.addNewTask()}"
+            android:src="@drawable/ic_round_add"
+            app:fabSize="normal"
+            app:layout_anchor="@id/refresh_layout"
+            app:layout_anchorGravity="bottom|right|end" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

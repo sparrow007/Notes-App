@@ -1,0 +1,24 @@
+<resources>
+    <style name="Platform.Theme.Neumorphism" parent="Theme.Neumorph.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/status_bar_scrim</item>
+        <item name="android:navigationBarColor">@color/nav_bar_scrim</item>
+    </style>
+
+    <style name="AppTheme" parent="Platform.Theme.Neumorphism">
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryDark">@color/background</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

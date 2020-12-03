@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.jackandphantom.mytodo.task.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/task_frag" >
+        <action
+            android:id="@+id/action_nav_home_to_task_edit_fragment"
+            app:destination="@id/task_edit_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/task_edit_fragment"
+        android:name="com.jackandphantom.mytodo.addittask.TaskEditFragment"
+        android:label="@string/task_edit"
+        tools:layout="@layout/task_edit">
+
+        <argument
+            android:name="taskId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_task_edit_fragment_to_nav_home"
+            app:destination="@id/nav_home" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.jackandphantom.mytodo.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+</navigation>
