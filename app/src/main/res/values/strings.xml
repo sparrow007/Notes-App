@@ -56,7 +56,12 @@
     <!-- Content Descriptions -->
     <string name="tasks_header_image_content_description">Tasks header image</string>
     <string name="no_tasks_image_content_description">No tasks image</string>
-
+    <string name="notes_text">Notes</string>
+    <string name="note_is_empty">Note is empty</string>
+    <string name="note__title">Title</string>
+    <string name="note_description">Write a note...</string>
+    <string name="notes_save">Save</string>
+    <string name="notes_delete">Delete</string>
 
 
 </resources>

@@ -54,12 +54,12 @@ class TaskFragment : Fragment() {
 
     private fun setupNavigation() {
         viewModel.openTaskEvent.observe(viewLifecycleOwner, EvenObserver {
-            val action = HomeFragmentDirections.actionNavHomeToTaskEditFragment(it)
+            val action = TaskFragmentDirections.actionNavHomeToTaskEditFragment(it)
             findNavController().navigate(action)
         })
         viewModel.newTaskEvent.observe(viewLifecycleOwner, EvenObserver {
            // navigateToAddNewTask()
-            val action = HomeFragmentDirections.actionNavHomeToTaskEditFragment(null)
+            val action = TaskFragmentDirections.actionNavHomeToTaskEditFragment(null)
             findNavController().navigate(action)
 
 
@@ -70,7 +70,7 @@ class TaskFragment : Fragment() {
         activity?.findViewById<FloatingActionButton>(R.id.add_task_fab)?.let {
             it.setOnClickListener {
                // navigateToAddNewTask()
-                val action = HomeFragmentDirections.actionNavHomeToTaskEditFragment(null)
+                val action = TaskFragmentDirections.actionNavHomeToTaskEditFragment(null)
                 findNavController().navigate(action)
             }
         }

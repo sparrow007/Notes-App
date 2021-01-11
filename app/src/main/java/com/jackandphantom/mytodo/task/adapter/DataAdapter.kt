@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jackandphantom.mytodo.data.Task
 import com.jackandphantom.mytodo.databinding.ListItemBinding
-import com.jackandphantom.mytodo.databinding.TaskListBinding
 import com.jackandphantom.mytodo.task.TaskViewModel
 
 class DataAdapter (private val viewModel: TaskViewModel) : ListAdapter<Task, DataAdapter.ViewHolder>(TaskDiffCallback()) {
 
 
     class ViewHolder private constructor(val binding : ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-
         fun bind(viewModel: TaskViewModel , task: Task) {
 
             binding.viewmodel = viewModel

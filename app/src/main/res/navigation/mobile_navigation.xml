@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.jackandphantom.mytodo.task.ui.HomeFragment"
+        android:name="com.jackandphantom.mytodo.task.ui.TaskFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/task_frag" >
         <action
@@ -31,9 +31,4 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.jackandphantom.mytodo.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>
