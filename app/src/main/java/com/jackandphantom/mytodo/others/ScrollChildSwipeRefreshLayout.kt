@@ -1,4 +1,4 @@
-package com.jackandphantom.mytodo
+package com.jackandphantom.mytodo.others
 
 import android.content.Context
 import android.util.AttributeSet

@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout
+        <com.jackandphantom.mytodo.others.ScrollChildSwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/refresh_layout"
@@ -79,7 +79,7 @@
 
             </RelativeLayout>
 
-        </com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout>
+        </com.jackandphantom.mytodo.others.ScrollChildSwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_task_fab"

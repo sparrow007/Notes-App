@@ -1,6 +1,6 @@
 package com.jackandphantom.mytodo.task.di
 
-import com.jackandphantom.mytodo.task.HomeFragment
+import com.jackandphantom.mytodo.task.ui.TaskFragment
 import dagger.Subcomponent
 
 
@@ -15,5 +15,5 @@ interface TaskComponent {
 
    //Inject your fragment / Activity
 
-    fun inject(homeFragment: HomeFragment)
+    fun inject(taskFragment: TaskFragment)
 }

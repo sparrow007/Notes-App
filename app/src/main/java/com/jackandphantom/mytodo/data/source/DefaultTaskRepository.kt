@@ -3,8 +3,6 @@ package com.jackandphantom.mytodo.data.source
 import android.util.Log
 import com.jackandphantom.mytodo.data.Result
 import com.jackandphantom.mytodo.data.Task
-import com.jackandphantom.mytodo.data.source.local.TaskLocalDataSource
-import com.jackandphantom.mytodo.data.source.remote.TaskRemoteDataSource
 import com.jackandphantom.mytodo.di.AppModule.TasksLocalDataSource
 import com.jackandphantom.mytodo.di.AppModule.TasksRemoteDataSource
 import kotlinx.coroutines.*
@@ -37,7 +35,7 @@ class DefaultTaskRepository @Inject constructor(
            return@withContext Result.Success(tasks.sortedBy { it.entry_id })
        }
 
-        (newTasks as Result.Success)?.let {
+        (newTasks as Result.Success).let {
              if(it.data.isEmpty())
                  return@withContext Result.Success(it.data)
         }

@@ -1,4 +1,4 @@
-package com.jackandphantom.mytodo.task
+package com.jackandphantom.mytodo.task.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -15,13 +14,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jackandphantom.mytodo.EvenObserver
 import com.jackandphantom.mytodo.MyToDoApplication
 import com.jackandphantom.mytodo.R
-import com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout
 import com.jackandphantom.mytodo.databinding.TaskFragBinding
+import com.jackandphantom.mytodo.task.TaskViewModel
 import com.jackandphantom.mytodo.task.adapter.DataAdapter
 import com.jackandphantom.mytodo.utils.setupRefreshLayout
 import javax.inject.Inject
 
-class HomeFragment : Fragment() {
+class TaskFragment : Fragment() {
 
     // @
     @Inject

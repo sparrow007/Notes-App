@@ -12,10 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.task_activity_main)
 
-
-        val navController = findNavController(R.id.task_nav_host)
-
-
     }
 
 }

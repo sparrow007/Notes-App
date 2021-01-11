@@ -28,7 +28,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.jackandphantom.mytodo.Event
 import com.jackandphantom.mytodo.R
-import com.jackandphantom.mytodo.ScrollChildSwipeRefreshLayout
+import com.jackandphantom.mytodo.others.ScrollChildSwipeRefreshLayout
 
 /**
  * Transforms static java function Snackbar.make() to an extension function on View.

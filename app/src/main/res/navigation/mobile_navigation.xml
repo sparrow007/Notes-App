@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.jackandphantom.mytodo.task.HomeFragment"
+        android:name="com.jackandphantom.mytodo.task.ui.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/task_frag" >
         <action

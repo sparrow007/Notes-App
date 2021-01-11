@@ -10,8 +10,6 @@ sealed class Result <out R> {
     data class Error (val exception : Exception) : Result<Nothing>()
 
     object Loading : Result<Nothing>()
-
-
 }
 
 val Result<*>.succeeded
