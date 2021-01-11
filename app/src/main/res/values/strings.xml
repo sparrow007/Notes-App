@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Todo</string>
+    <string name="app_name">My Notes</string>
 
     <string name="add_task">New Task</string>
     <string name="edit_task">Edit Task</string>

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jackandphantom.mytodo.EvenObserver
-import com.jackandphantom.mytodo.MyToDoApplication
+import com.jackandphantom.mytodo.MyNotesApplication
 import com.jackandphantom.mytodo.R
 import com.jackandphantom.mytodo.databinding.TaskFragBinding
 import com.jackandphantom.mytodo.task.TaskViewModel
@@ -34,7 +34,7 @@ class TaskFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MyToDoApplication).appComponent
+        (requireActivity().application as MyNotesApplication).appComponent
             .taskComponent().create().inject(this)
     }
 

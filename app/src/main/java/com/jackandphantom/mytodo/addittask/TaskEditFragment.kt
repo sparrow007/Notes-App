@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jackandphantom.mytodo.EvenObserver
-import com.jackandphantom.mytodo.MyToDoApplication
+import com.jackandphantom.mytodo.MyNotesApplication
 import com.jackandphantom.mytodo.R
 import com.jackandphantom.mytodo.databinding.TaskEditBinding
 import soup.neumorphism.NeumorphImageButton
@@ -30,7 +30,7 @@ class TaskEditFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().applicationContext as MyToDoApplication).appComponent.taskEditComponent()
+        (requireActivity().applicationContext as MyNotesApplication).appComponent.taskEditComponent()
             .create().inject(this)
     }
 

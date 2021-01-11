@@ -4,7 +4,7 @@ import android.app.Application
 import com.jackandphantom.mytodo.di.AppComponent
 import com.jackandphantom.mytodo.di.DaggerAppComponent
 
-class MyToDoApplication : Application() {
+class MyNotesApplication : Application() {
 
     val appComponent : AppComponent by lazy {
         initializeComponent()
