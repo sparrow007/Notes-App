@@ -13,6 +13,10 @@ class TaskViewModel @Inject constructor(
     private val taskRepository: TaskRepository
 ) : ViewModel() {
 
+    /**
+     * UI layer should interact with the live data because live data can not set the value
+     * so it would work like abstraction for UI layer, only observe the value don't change it.
+      */
    private val _items = MutableLiveData<List<Task>>().apply { value = emptyList() }
     val items : LiveData<List<Task>> = _items
 
@@ -27,18 +31,22 @@ class TaskViewModel @Inject constructor(
     private val _newTaskEvent = MutableLiveData<Event<Unit>>()
     val newTaskEvent : LiveData<Event<Unit>> = _newTaskEvent
 
-    private val _snackbarText = MutableLiveData<Event<Int>>()
-    val snackbarText : LiveData<Event<Int>> = _snackbarText
-
     val empty : LiveData<Boolean> = Transformations.map(_items) {
         it.isEmpty()
     }
 
+    /**
+     * When ever the viewModel is create in fragment or Activity init will always will be run first
+     * so always try to run those codes which are going fetch data from local or remote source.
+     */
     init {
         load(true)
     }
 
-
+    /**
+     * load the data from either local or remote source
+     * @param forceUpdate check force in the remote source
+     */
     fun load(forceUpdate : Boolean) {
         _dataLoading.value = true
 
@@ -76,7 +84,6 @@ class TaskViewModel @Inject constructor(
     fun clearCompleteTask() {
         viewModelScope.launch {
             taskRepository.clearCompletedTasks()
-            showSnackbarMessage(R.string.completed_tasks_cleared)
             load(false)
         }
     }
@@ -84,10 +91,8 @@ class TaskViewModel @Inject constructor(
     fun completeTask(task : Task, completed : Boolean) = viewModelScope.launch {
         if (completed) {
             taskRepository.completeTask(task);
-            showSnackbarMessage(R.string.task_marked_complete)
         }else {
             taskRepository.activateTask(task)
-            showSnackbarMessage(R.string.task_marked_active)
         }
     }
     fun refresh() {
@@ -100,10 +105,6 @@ class TaskViewModel @Inject constructor(
 
     fun addNewTask() {
         _newTaskEvent.value = Event(Unit)
-    }
-
-    fun showSnackbarMessage(message : Int) {
-        _snackbarText.value = Event(message)
     }
 
 }

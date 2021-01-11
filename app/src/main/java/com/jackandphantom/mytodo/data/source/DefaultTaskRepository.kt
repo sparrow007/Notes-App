@@ -10,6 +10,11 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 import javax.inject.Inject
 
+/**
+ * Implementation of the task repository which will provide all the either from local or remote to the viewModel
+ * @param taskLocalDataSource local data source (Room database)
+ * @param taskRemoteDataSource remote data source (Network calls)
+ */
 class DefaultTaskRepository @Inject constructor(
     @TasksLocalDataSource private val taskLocalDataSource: DataSource,
     @TasksRemoteDataSource private val taskRemoteDataSource: DataSource,
@@ -61,8 +66,6 @@ class DefaultTaskRepository @Inject constructor(
         return@withContext newTask
     }
 
-
-
     private suspend fun fetchDataFromRemoteOrLocal(taskId: String, forceUpdate: Boolean) : Result<Task> {
 
         val task = taskRemoteDataSource.getTask(taskId)
@@ -78,7 +81,6 @@ class DefaultTaskRepository @Inject constructor(
             }
 
             else -> throw IllegalStateException()
-
         }
 
         //Don't read from local if it's forces
@@ -93,7 +95,10 @@ class DefaultTaskRepository @Inject constructor(
 
     }
 
-
+    /**
+     * Save the task in local database and remote cache
+     * @param task data is to be save
+     */
     override suspend fun saveTask(task: Task) {
 
         cacheAndPerform(task) {
@@ -104,6 +109,10 @@ class DefaultTaskRepository @Inject constructor(
         }
     }
 
+    /**
+     * Most of the part is unused in the viewModel will be added when we will implement more functions to app
+     * Notify completion of the task
+     */
     override suspend fun completeTask(task: Task) {
         cacheAndPerform(task) {
             it.isCompleted = true
@@ -113,6 +122,7 @@ class DefaultTaskRepository @Inject constructor(
             }
         }
     }
+
 
     override suspend fun completeTask(taskId: String) {
         withContext(ioDispatcher) {
@@ -222,8 +232,6 @@ class DefaultTaskRepository @Inject constructor(
             taskLocalDataSource.saveTask(data)
         }
     }
-
-
 
     private fun refreshCache(tasks : List<Task>) {
          //First clear all the cache data

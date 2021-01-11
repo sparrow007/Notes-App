@@ -6,6 +6,10 @@ import com.jackandphantom.mytodo.data.source.DataSource
 import kotlinx.coroutines.delay
 import java.lang.Exception
 
+/**
+ * Remote data source for the application, currently this app is not connected to any remote source so this would
+ * work as the dummy data source just realize that if we have network source how will handle those cases.
+ */
 object TaskRemoteDataSource : DataSource {
 
     private val SERVICE_LATENCY_IN_MILLS = 1000L

@@ -22,36 +22,36 @@ import javax.inject.Inject
 
 class TaskFragment : Fragment() {
 
-    // @
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private val viewModel by viewModels<TaskViewModel> { viewModelFactory }
-
     private lateinit var viewDataBinding: TaskFragBinding
-
     private lateinit var listAdapter: DataAdapter
 
+    /**
+     * It is a good practice to inject your dagger graph for your fragment in onAttach
+     * @param context activity context
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (requireActivity().application as MyNotesApplication).appComponent
             .taskComponent().create().inject(this)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         viewDataBinding = TaskFragBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
         }
         return viewDataBinding.root
     }
 
-
+    /**
+     * Listen for event for either open a task or create new task
+     */
     private fun setupNavigation() {
         viewModel.openTaskEvent.observe(viewLifecycleOwner, EvenObserver {
             val action = TaskFragmentDirections.actionNavHomeToTaskEditFragment(it)
@@ -61,7 +61,6 @@ class TaskFragment : Fragment() {
            // navigateToAddNewTask()
             val action = TaskFragmentDirections.actionNavHomeToTaskEditFragment(null)
             findNavController().navigate(action)
-
 
         })
     }
@@ -76,10 +75,12 @@ class TaskFragment : Fragment() {
         }
     }
 
-
+    /**
+     * Initialize all the necessary components for the fragment
+     * always used onActivityCreated for listener, load your initial data into your UI
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         setUpListAdapter()
         setupRefreshLayout(viewDataBinding.refreshLayout, viewDataBinding.tasksList)
@@ -89,10 +90,11 @@ class TaskFragment : Fragment() {
         viewModel.load(true)
     }
 
+    /**
+     * Initialize the adapter for the recyclerview
+     */
     private fun setUpListAdapter() {
-
         val viewModel = viewDataBinding.viewmodel
-
         if (viewModel != null) {
             listAdapter = DataAdapter(this.viewModel)
             viewDataBinding.tasksList.adapter = listAdapter
