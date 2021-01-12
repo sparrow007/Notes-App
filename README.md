@@ -4,7 +4,8 @@
 
 It is a notes app which is based on neumorphism user interface and also provide dark theme.
 
-![Note app feature 1 0](https://user-images.githubusercontent.com/22986571/104268772-b8711100-54ba-11eb-8317-a491781ed1fc.jpg)
+![Note app feature 1 0](./preview/notes_app.gif)
+
 
 ## Architecture
 Based on mvvm architecture and repository pattern.<br><br>
@@ -20,6 +21,14 @@ Based on mvvm architecture and repository pattern.<br><br>
 - [Dagger2](https://github.com/google/dagger) for dependency injection
 - [Glide](https://github.com/bumptech/glide) for loading images
 - [NeumorphismView-Android](https://github.com/thelumiereguy/NeumorphismView-Android) for neumorphism user interface in android
+
+## Upcoming
+- Stick with the project i am uploading all test files regarding this project.
+- Adding More features regularly.
+
+## Contribution
+Feel free to generate any issue regarding the project and if you want to send PR ,feel free to first dicussion in the issue and then send PR , i will be happy to accept
+your PR.
 
 ## License
 -----
