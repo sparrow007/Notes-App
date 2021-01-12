@@ -100,7 +100,7 @@ class TaskFragment : Fragment() {
             viewDataBinding.tasksList.adapter = listAdapter
 
         } else {
-            Log.e("MY TAG", "View model is not initalize before inititalizing the adapter")
+           // Log.e("MY TAG", "View model is not initalize before inititalizing the adapter")
         }
 
     }

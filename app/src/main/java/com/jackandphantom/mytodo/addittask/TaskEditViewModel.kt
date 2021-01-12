@@ -83,7 +83,7 @@ class TaskEditViewModel @Inject constructor(
         val currentTitle = title.value
         val currentDescription = description.value
 
-        Log.e("MY TAG", "YES I AM SAVE TASK "+ currentDescription + currentTitle)
+      //  Log.e("MY TAG", "YES I AM SAVE TASK "+ currentDescription + currentTitle)
 
         if (currentDescription == null || currentTitle == null) {
             return
@@ -105,7 +105,7 @@ class TaskEditViewModel @Inject constructor(
 
     private fun createTask(task : Task) = viewModelScope.launch {
         repository.saveTask(task)
-        Log.e("MY TAG", "YES I AM CALING")
+      //  Log.e("MY TAG", "YES I AM CALING")
         _taskUpdateEvent.value = Event(Unit)
     }
 
