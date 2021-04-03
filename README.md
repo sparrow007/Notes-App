@@ -6,6 +6,9 @@ It is a notes app which is based on neumorphism user interface and also provide 
 
 ![Note app feature 1 0](./preview/notes_app.gif)
 
+## Download 
+<a href='https://play.google.com/store/apps/details?id=com.jackandphantom.mytodo'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
+
 
 ## Architecture
 Based on mvvm architecture and repository pattern.<br><br>
