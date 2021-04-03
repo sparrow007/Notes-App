@@ -104,6 +104,7 @@ class TaskViewModel @Inject constructor(
     }
 
     fun addNewTask() {
+        //database values +
         _newTaskEvent.value = Event(Unit)
     }
 
